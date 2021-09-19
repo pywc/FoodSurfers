@@ -1,10 +1,18 @@
 const express = require('express')
-const app = express()
+
 const passport = require('passport')
 const session = require('express-session')
 const facebookStrategy = require('passport-facebook').Strategy
 const pool = require('./models/dbConfig.js').pool
 const db = require('./models/mealQueries.js')
+const fs = require('fs')
+const https = require('https')
+const http = require('http')
+var privateKey  = fs.readFileSync('cert/private.key', 'utf8');
+var certificate = fs.readFileSync('cert/certificate.crt', 'utf8');
+
+var credentials = {key: privateKey, cert: certificate};
+const app = express()
 
 app.use(express.json());
 
@@ -23,8 +31,8 @@ app.use(passport.session());
 passport.use(new facebookStrategy({
     // pull in our app id and secret from our auth.js file
     clientID        : "YOUR_FACEBOOK_APP_ID",
-    clientSecret    : "YOUR_FACEBOOK_APP_PASSWORD",
-    callbackURL     : "http://localhost:5000/facebook/callback",
+    clientSecret    : "YOUR_FACEBOOK_APP_PW",
+    callbackURL     : "https://foodsurfers.eastus.cloudapp.azure.com/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)','email']
 
 },// facebook will send back the token and profile
@@ -127,6 +135,10 @@ app.get('/login',(req,res) => {
     res.render("login")
 })
 
-app.listen(5000,() => {
-    console.log("App is listening on Port 5000")
-})
+http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
+var httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(443)
