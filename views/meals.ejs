@@ -1,0 +1,52 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Meal Page</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1></span>Meal Page</h1>
+        <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+        <div>
+            <div class="well">
+                <h3 class="text-primary">New Meal</h3>
+                    <form action="/meals" method="post">
+                        Food Name: <input type="text" id="foodName" name="foodName"><br>
+                        Food Image: <input type="text" id="foodImage" name="foodImage"><br>
+                        Open?: <select id="openStatus">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select><br>
+                        Description: <input type="text" id="description" name="description"><br>
+                        Starting Time: <input type="datetime-local" id="startTime" name="startTime"><br>
+                        Ending Time: <input type="datetime-local" id="endTime" name="endTime"><br>
+                        City: <input type="text" id="city" name="city"><br>
+                        Country: <input type="text" id="country" name="country"><br>
+                        Possible Allergies: <input type="text" id="allergies" name="allergies"><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                <hr>
+                <h3 class="text-primary">Meals</h3>
+                <p>
+                <% for(var i=0; i < meals.length; i++) { %>
+                    - <a href="/meals/<%= meals[i].mid %>">Eat <strong><%= meals[i].foodname %></strong> at <%= meals[i].city %>, <%= meals[i].country %> on <%= new Date(meals[i].starttime * 1) %></a><br>
+                <% } %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

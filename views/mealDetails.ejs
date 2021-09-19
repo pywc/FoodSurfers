@@ -1,0 +1,46 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title><%= data.foodname %></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Meal Details Page</h1>
+        <a href="/meals" class="btn btn-default btn-sm">Meals</a>
+        <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- FACEBOOK INFORMATION -->
+        <div>
+            <div class="well">
+                <h3 class="text-primary">Facebook</h3>
+                    <p>
+                        <strong>Food</strong>: <%= data.foodname %><br>
+                        <strong>Host</strong>: <%= name %><br>
+                        <strong>Open?</strong>: <%= status %><br>
+                        <strong>Description</strong>: <%= data.description %><br>
+                        <strong>Possible Allergies</strong>: <%= data.allergies %><br>
+                        <strong>Starting Time</strong>: <%= starttime %><br>
+                        <strong>Ending Time</strong>: <%= endtime %><br>
+                        <strong>City</strong>: <%= data.city %><br>
+                        <strong>Country</strong>: <%= data.country %><br>
+                    </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
