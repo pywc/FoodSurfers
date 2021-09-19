@@ -32,8 +32,8 @@ app.use(passport.session());
 // facebook login
 passport.use(new facebookStrategy({
     // pull in our app id and secret from our auth.js file
-    clientID        : "255539676488910",
-    clientSecret    : "47a682cb91bd63d11876430565340a1e",
+    clientID        : "YOUR_FACEBOOK_APP_ID",
+    clientSecret    : "YOUR_FACEBOOK_APP_PW",
     callbackURL     : "https://foodsurfers.eastus.cloudapp.azure.com/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)','email']
 

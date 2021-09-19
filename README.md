@@ -3,14 +3,20 @@ HackMIT 2021 Project.
 
 Authors: Paul Chung, Pulkit Girdhar, Harsh Garg, and Vibhu Soni.
 
-Food sharing platform based on Express, Passport, and PostgreSQL.
+Food sharing platform based on Express, Passport-facebook, and PostgreSQL.
 
 Meet up with other people worldwide and have a fantastic and engaging meal!
 
 ### Setup
-1. Install NodeJS and PostgreSQL.
-2. Configure DB credentials in ```/models/dbConfig.js```
-3. Configure Facebook App Access credentials in ```/app.js``` (On localhost, use test instances of Facebook App to prevent security errors) 
-4. Navigate to the server directory and do ```npm i```
-5. Execute dbinit.sql on PostgreSQL server.
-6. Fire the server!!!!!!! Roar!!!!!!!!
+1. Install and configure NodeJS and PostgreSQL.
+2. Change DB access constants in ```/models/dbConfig.js```.
+3. Change ```facebookStrategy``` credentials in ```/app.js``` to include your App ID.
+4. Change Facebook callback URL in ```/app.js```.
+4. Navigate to server directory in terminal and do ```npm i```.
+5. Execute dbinit.sql on your PostgreSQL server.
+6. Get a pair of SSL certificates, put it in ```/cert```, and edit ```privateKey``` and ```certificate``` constants in ```/app.js```.
+7. Fire up the server!
+
+
+### Demo
+![Main Meals Page](demo/demo1.png)
