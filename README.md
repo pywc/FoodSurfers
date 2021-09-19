@@ -1,9 +1,9 @@
 # FoodSurfers (HackMIT 2021)
 Authors: Paul Chung, Pulkit Girdhar, Harsh Garg, and Vibhu Soni.
 
-Food sharing platform based on Express, Passport-facebook, and PostgreSQL.
+- Food sharing platform based on Express, Passport-facebook, and PostgreSQL.
 
-Meet up with other people worldwide and have a fantastic and engaging meal!
+- Meet up with other people worldwide and have a fantastic and engaging meal!
 
 ### Setup
 1. Install and configure NodeJS and PostgreSQL.
