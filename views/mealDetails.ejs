@@ -13,7 +13,7 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1>Meal Details Page</h1>
+        <h1><%= data.foodname %></h1>
         <a href="/meals" class="btn btn-default btn-sm">Meals</a>
         <a href="/profile" class="btn btn-default btn-sm">Profile</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
@@ -24,15 +24,13 @@
         <!-- FACEBOOK INFORMATION -->
         <div>
             <div class="well">
-                <h3 class="text-primary"><%= data.foodname %></h3>
+                <h3 class="text-primary"><%= data.city %>, <%= data.country %></h3>
                     <p>
                         <strong>Host</strong>: <%= name %><br>
                         <strong>Description</strong>: <%= data.description %><br>
                         <strong>Possible Allergies</strong>: <%= data.allergies %><br>
                         <strong>Starting Time</strong>: <%= starttime %><br>
                         <strong>Ending Time</strong>: <%= endtime %><br>
-                        <strong>City</strong>: <%= data.city %><br>
-                        <strong>Country</strong>: <%= data.country %><br>
                     </p>
             </div>
         </div>

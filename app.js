@@ -1,19 +1,21 @@
-const express = require('express')
-
-const passport = require('passport')
-const session = require('express-session')
-const facebookStrategy = require('passport-facebook').Strategy
-const pool = require('./models/dbConfig.js').pool
-const db = require('./models/mealQueries.js')
 const fs = require('fs')
 const https = require('https')
 const http = require('http')
-var privateKey  = fs.readFileSync('cert/private.key', 'utf8');
-var certificate = fs.readFileSync('cert/certificate.crt', 'utf8');
+const express = require('express')
+const passport = require('passport')
+const session = require('express-session')
+const facebookStrategy = require('passport-facebook').Strategy
 
-var credentials = {key: privateKey, cert: certificate};
+const pool = require('./models/dbConfig.js').pool
+const db = require('./models/mealQueries.js')
+
+const privateKey  = fs.readFileSync('cert/private.key', 'utf8');
+const certificate = fs.readFileSync('cert/certificate.crt', 'utf8');
+const credentials = {key: privateKey, cert: certificate};
+
 const app = express()
 
+// json parse feature
 app.use(express.json());
 
 // for post body
@@ -30,8 +32,8 @@ app.use(passport.session());
 // facebook login
 passport.use(new facebookStrategy({
     // pull in our app id and secret from our auth.js file
-    clientID        : "YOUR_FACEBOOK_APP_ID",
-    clientSecret    : "YOUR_FACEBOOK_APP_PW",
+    clientID        : "255539676488910",
+    clientSecret    : "47a682cb91bd63d11876430565340a1e",
     callbackURL     : "https://foodsurfers.eastus.cloudapp.azure.com/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)','email']
 
@@ -48,7 +50,6 @@ function(token, refreshToken, profile, done) {
 
             // if the user is found, then log them in
             if (user) {
-                console.log("user found")
                 return done(null, user); // user found, return that user
             } else {
                 // if there is no user found with that facebook id, create them
@@ -139,6 +140,6 @@ http.createServer(function (req, res) {
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
-var httpsServer = https.createServer(credentials, app);
 
+const httpsServer = https.createServer(credentials, app);
 httpsServer.listen(443)

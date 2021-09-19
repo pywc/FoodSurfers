@@ -9,6 +9,7 @@ const getMeals = (req, res) => {
         throw error
       }
       res.status(200).render('../views/meals.ejs', { 
+        name: req.user.name,
         meals: results.rows
       })
     })
@@ -49,9 +50,6 @@ const getMealById = (req, res) => {
 
       const startTime = new Date(results.rows[0]['starttime'] * 1);
       const endTime = new Date(results.rows[0]['endtime'] * 1);
-
-      console.log(results.rows[0]['starttime']);
-      console.log(startTime);
 
       res.status(200).render('../views/mealDetails.ejs', {
         data: results.rows[0],
