@@ -3,6 +3,7 @@ HackMIT 2021 Project.
 Authors: Paul Chung, Pulkit Girdhar, Harsh Garg, and Vibhu
 
 Food sharing platform based on Express, Passport, and PostgreSQL.
+
 Meet up with other people worldwide and have a fantastic and engaging meal!
 
 ### Setup
