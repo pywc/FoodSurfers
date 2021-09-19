@@ -1,7 +1,7 @@
 # FoodSurfers
 HackMIT 2021 Project.
 
-Authors: Paul Chung, Pulkit Girdhar, Harsh Garg, and Vibhu
+Authors: Paul Chung, Pulkit Girdhar, Harsh Garg, and Vibhu Soni.
 
 Food sharing platform based on Express, Passport, and PostgreSQL.
 
